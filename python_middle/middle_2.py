@@ -67,4 +67,16 @@ def genieMusic():
      music_data=requests.get(url,headers=headers)
      music_data=music_data.text
      print(music_data)
-genieMusic()
+     soup=BeautifulSoup(music_data,'html.parser')
+     title=soup.select('.list-wrap .title')
+     singer=soup.select('.list-wrap .artist')
+     album=soup.select('.list-wrap .albumtitle')
+     poster=soup.select('.list-wrap .cover img')
+     for i in range(0,len(title)):
+        print(title[i].text)
+        print(singer[i].text)
+        print(album[i].text)
+        print(poster[i].attrs['src'])
+#genieMusic()
+def melonMusic():
+    pass
