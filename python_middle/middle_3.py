@@ -46,6 +46,18 @@ def newsData():
         #print(content)
     strr=''.join(s for s in content)
     box=re.findall("[\w]{2,}",strr)
-    print(box)
+    #print(box)
+    dic={}
+    for i in box:
+        if i in dic:
+            dic[i]+=1
+        else:
+            dic[i]=1
+    wordcloud=WordCloud(font_path='c:/pydata/NanumGothic.ttf')
+    pic=wordcloud.generate_from_frequencies(dic)
+    plt.figure(figsize=(15,10))
+    plt.imshow(pic)
+    plt.axis('off')
+    plt.show()
 
 newsData()
